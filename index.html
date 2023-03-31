@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Clock</title>
+</head>
+<body>
+  <!-- htmls -->
+  <div class="myclock" id="clock"></div>
+  
+  <!-- Css -->
+  <style>
+    .myclock{
+      border: 20px solid black;
+      width: 400px;
+      margin: 200px auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 20px 20px 10px 1px gray;
+      font-size: 70px;
+      font-family: sans-serif;
+    }
+  </style>
+
+  <!-- JavaScript -->
+  <script>
+    // function
+    function setTime(){
+    // declar variables
+    var nowTime = new Date();
+    var h = nowTime.getHours();
+    var m = nowTime.getMinutes();
+      var s = nowTime.getSeconds();
+      var session = "Am";
+
+      // if statement
+      if ( h== 0){ h=12;}
+      if(h>12){ h = h- 12 ; session = " PM";}
+
+      h = (h < 10) ? "0" + h : h ;
+      m = (m < 10) ? "0" + m : m ;
+        s = (s < 10) ? "0" + s : s;
+
+        var time = h + ":" + m + ":" + s + session ;
+        document.getElementById("clock").innerHTML = time ;
+          document.getElementById("clock").textContent = time;
+          setTimeout(setTime ,1000);
+          }
+          setTime();
+  </script>
+</body>
+</html>
